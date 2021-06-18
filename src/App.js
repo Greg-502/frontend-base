@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router } from 'react-router-dom'
+import AppRouter from './routers/AppRouter'
+import AuthProvider from './auth/AuthProvider'
+import Layout from './components/layout/Layout'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // Router queda sobre AuthProvider para redirigir a la ruta anteior al hacer login
+    // Hay acceso al router en el AuthProvider, 
+    // AuthProvider envia info a los hijos
+    <Router>
+      <AuthProvider> 
+        <Layout>
+          <AppRouter/>
+        </Layout>
+      </AuthProvider>
+    </Router>
   );
 }
 
